@@ -4,7 +4,7 @@
     "anonymousAuthentication": true,
     "iisExpress": {
       "applicationUrl": "http://localhost:61134",
-      "sslPort": 44379
+      "sslPort": 0
     }
   },
   "profiles": {
@@ -28,12 +28,9 @@
       "launchBrowser": true,
       "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}",
       "environmentVariables": {
-        "ASPNETCORE_URLS": "https://+:443;http://+:80",
-        "ASPNETCORE_HTTPS_PORT": "44380"
+        "ASPNETCORE_URLS": "http://+:80"
       },
-      "httpPort": 61135,
-      "useSSL": true,
-      "sslPort": 44380
+      "httpPort": 61135
     }
   }
 }
