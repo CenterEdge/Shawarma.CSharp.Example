@@ -7,6 +7,8 @@
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
 
+    <p style="strong">Current iteration: @BackgroundService.IterationCount</p>
+
     <p align="center">
         The buttons below send HTTP POST requests to the service to enable/disable Shawarma.
     </p>
@@ -16,7 +18,8 @@
 
     <p align="center">
         <button id="enable">Enable Services</button><br />
-        <button id="disable">Disable Services</button>
+        <button id="disable">Disable Services</button><br />
+        <button id="getstatus">Get Status</button>
 
         <pre id="response"></pre>
     </p>

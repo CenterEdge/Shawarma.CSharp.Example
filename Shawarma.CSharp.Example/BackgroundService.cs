@@ -8,6 +8,8 @@ namespace Shawarma.CSharp.Example
 {
     public class BackgroundService : IHostedService
     {
+        public static int IterationCount { get; private set; }
+
         private readonly ILogger<BackgroundService> _logger;
         private CancellationTokenSource _cancellationTokenSource;
 
@@ -23,11 +25,9 @@ namespace Shawarma.CSharp.Example
 #pragma warning disable 4014
             Task.Run(async () =>
             {
-                var i = 0;
-
                 while (!localCts.IsCancellationRequested)
                 {
-                    _logger.LogInformation($"Background process running, iteration {i++}");
+                    _logger.LogInformation($"Background process running, iteration {IterationCount++}");
 
                     await Task.Delay(5000, localCts.Token);
                 }
