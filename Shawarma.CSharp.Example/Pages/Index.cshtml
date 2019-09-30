@@ -1,0 +1,23 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+
+    <p align="center">
+        The buttons below send HTTP POST requests to the service to enable/disable Shawarma.
+    </p>
+    <p align="center">
+        Note: This is designed for a service behind an API gateway, these endpoints should not be publicly accessible.
+    </p>
+
+    <p align="center">
+        <button id="enable">Enable Services</button><br />
+        <button id="disable">Disable Services</button>
+
+        <pre id="response"></pre>
+    </p>
+</div>
