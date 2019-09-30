@@ -2,6 +2,20 @@
 // for details on configuring this project to bundle and minify static web assets.
 
 $(document).ready(function() {
+    function getStatus() {
+        $.ajax({
+            method: "GET",
+            url: "/applicationstate",
+            dataType: "json",
+            success: function(data, status) {
+                $("#response").text(JSON.stringify(data));
+            },
+            error: function(xhr, status) {
+                $("#response").text(status);
+            }
+        });
+    }
+
     function sendRequest(active) {
         $.ajax({
             method: "POST",
@@ -27,4 +41,10 @@ $(document).ready(function() {
     $("#disable").click(function() {
         sendRequest(false);
     });
+
+    $("#getstatus").click(function() {
+        getStatus();
+    });
+
+    getStatus();
 });
