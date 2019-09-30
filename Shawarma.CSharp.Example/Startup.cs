@@ -4,6 +4,8 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Shawarma.AspNetCore;
+using Shawarma.AspNetCore.Hosting;
 
 namespace Shawarma.CSharp.Example
 {
@@ -22,7 +24,8 @@ namespace Shawarma.CSharp.Example
             services.AddRazorPages();
 
             services
-                .AddHostedService<BackgroundService>();
+                .AddShawarmaHosting()
+                .AddShawarmaService<BackgroundService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -41,6 +44,7 @@ namespace Shawarma.CSharp.Example
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+            app.UseShawarma();
 
             app.UseRouting();
 

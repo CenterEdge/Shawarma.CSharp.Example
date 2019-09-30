@@ -1,22 +1,22 @@
 ﻿using System;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Shawarma.AspNetCore.Hosting;
 
 namespace Shawarma.CSharp.Example
 {
-    public class BackgroundService : IHostedService
+    public class BackgroundService : GenericShawarmaService
     {
         private readonly ILogger<BackgroundService> _logger;
         private CancellationTokenSource _cancellationTokenSource;
 
-        public BackgroundService(ILogger<BackgroundService> logger)
+        public BackgroundService(ILogger<BackgroundService> logger) : base(logger)
         {
             _logger = logger;
         }
 
-        public Task StartAsync(CancellationToken cancellationToken)
+        protected override Task StartInternalAsync(CancellationToken cancellationToken)
         {
             var localCts = _cancellationTokenSource = new CancellationTokenSource();
 
@@ -37,7 +37,7 @@ namespace Shawarma.CSharp.Example
             return Task.CompletedTask;
         }
 
-        public Task StopAsync(CancellationToken cancellationToken)
+        protected override Task StopInternalAsync(CancellationToken cancellationToken)
         {
             _cancellationTokenSource?.Cancel();
             _cancellationTokenSource = null;

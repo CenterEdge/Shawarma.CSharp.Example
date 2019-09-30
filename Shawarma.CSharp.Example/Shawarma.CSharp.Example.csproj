@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.9.5" />
+    <PackageReference Include="Shawarma.AspNetCore.Hosting" Version="1.0.0" />
   </ItemGroup>
 
 </Project>
