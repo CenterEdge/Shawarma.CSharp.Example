@@ -1,23 +1,12 @@
-using System;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
+using Shawarma.CSharp.Example;
 
-namespace Shawarma.CSharp.Example
-{
-    public class Program
+Host.CreateDefaultBuilder(args)
+    .ConfigureWebHostDefaults(webBuilder =>
     {
-        public static void Main(string[] args)
-        {
-            CreateHostBuilder(args).Build().Run();
-        }
-
-        public static IHostBuilder CreateHostBuilder(string[] args) =>
-            Host.CreateDefaultBuilder(args)
-                .ConfigureWebHostDefaults(webBuilder =>
-                {
-                    webBuilder.ConfigureKestrel(options => options.AllowSynchronousIO = true);
-
-                    webBuilder.UseStartup<Startup>();
-                });
-    }
-}
+        webBuilder.ConfigureKestrel(options => options.AllowSynchronousIO = true);
+        webBuilder.UseStartup<Startup>();
+    })
+    .Build()
+    .Run();
